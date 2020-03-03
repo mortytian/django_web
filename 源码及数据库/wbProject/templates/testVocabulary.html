@@ -1,0 +1,25 @@
+{% extends 'wordsweb_base.html' %}
+{% block content %}
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    <style>
+        .form-area{
+            width: 55% ;
+            margin: 13% auto;
+        }
+    </style>
+
+
+<form class="form-area" action="{% url 'TestVocabulary' %}" method="POST">
+{% csrf_token %}
+    <div class="row">
+    {{page_html|safe}}
+</div>
+
+     <button class="btn waves-effect waves-light light-blue lighten-1" type="submit" name="action">提交
+    <i class="material-icons right">send</i>
+
+
+  </button>
+  </form>
+
+{% endblock %}

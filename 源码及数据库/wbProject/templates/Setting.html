@@ -1,0 +1,48 @@
+
+{% extends 'wordsweb_base.html' %}
+{% block content %}
+<!--    <link href="https://cdn.bootcss.com/twitter-bootstrap/3.4.1/css/bootstrap.min.css" rel="stylesheet">-->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    <style>
+        .form-area{
+            width: 50% ;
+            margin: 13% auto;
+        }
+    </style>
+<!-- Single button -->
+
+<form class="form-area" action="{% url 'Setting' %}" method="POST">
+{% csrf_token %}
+<div class="row">
+    <div class="col s6">
+        <label>新词数</label>
+        <select class="browser-default" name="learn_num">
+            <option value="" disabled selected>选择你希望每天学习的单词数</option>
+            {{learn_selection|safe}}
+        </select>
+    </div>
+
+    <div class="col s6">
+        <label>复习数</label>
+        <select class="browser-default" name="review_num">
+            <option value="" disabled selected>选择你希望每天复习的单词数</option>
+            {{review_selection|safe}}
+        </select>
+    </div>
+</div>
+
+<div class="row">
+    <div class="input-field col s6">
+      <input value="{{username}}" id="first_name2" type="text" class="validate" name="new_name">
+      <label class="active" for="first_name2">姓名</label>
+    </div>
+
+        <div class="input-field col s3 offset-s3">
+ <button class="btn waves-effect waves-light light-blue lighten-1" type="submit" name="action">提交
+    <i class="material-icons right">send</i>
+  </button>
+    </div>
+  </div>
+</form>
+
+{% endblock %}

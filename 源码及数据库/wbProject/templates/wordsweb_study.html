@@ -1,0 +1,253 @@
+
+<style>
+
+.Layout_page {
+    background-color: #f2f3f6;
+    min-height: 100vh;
+    position: relative;
+    padding-bottom:300px
+}
+
+    .book-cotainer{
+    flex: 1 1;
+    cursor:pointer
+    }
+    .index_status__15KG5 {
+    position: relative;
+    width: 1200px;
+    height: 268px;
+    border-radius: 20px;
+    background-color: #fafafa;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    padding: 0 30px;
+}
+
+    .img-cotainer{
+    position: relative;
+    width: 1200px;
+    height: 268px;
+    border-radius: 20px;
+    background-color: #fafafa;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    padding:0 30px
+    }
+
+    .img {
+    width: 143px;
+    height: 205px;
+    border-radius:20px
+}
+    .layout_main {
+    width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+    background-color: #ffffff;
+    overflow:hidden
+}
+    .index_title {
+    padding: 10px 0;
+    width: 1200px;
+    margin: 0 10px;
+    font-size: 18px;
+    color: #333;
+    font-weight:700
+}
+    .index_status__15KG5 .index_left__2l8QX {
+    flex: 1 1;
+    cursor: pointer;
+}
+
+    .Book_book{
+    display: flex;
+    position:relative
+}
+    .Book_book__2zLyg {
+    display: flex;
+    position: relative;
+}
+
+    .Book_book__2zLyg .Book_right__1bR8n {
+    width: 360px;
+    margin-left: 28px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    position: relative;
+}
+
+    .Book_book__2zLyg .Book_right__1bR8n .Book_title__32iYk {
+    display: flex;
+    align-items: center;
+}
+
+    .Book_timeWrapper__1RYvh {
+    margin-top: 10px;
+}
+
+    .Book_timeWrapper__1RYvh .Book_tag__3dJ-F {
+    background-color: #29b6f6;
+    margin-right: 10px;
+}
+
+.Book_progText__3qseZ {
+    font-size: 16px;
+    color: #666;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+}
+
+    .Book_progText__3qseZ {
+    font-size: 16px;
+    color: #666;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+}
+
+    .index_status__15KG5 .index_right__54_cL {
+    flex: 1 1;
+}
+
+.DailyTask_title__30qax {
+    font-size: 15px;
+    color: #999;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+    .DailyTask_itemsWrapper__10XO7 {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    text-align: center;
+    margin: 0 80px;
+}
+
+    .DailyTask_itemsWrapper__10XO7 {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    text-align: center;
+    margin: 0 80px;
+}
+    .DailyTask_item__3qF5E .DailyTask_num__1GeJP {
+    font-size: 40px;
+    color: #333;
+    font-weight: 700;
+}
+
+    .DailyTask_item__3qF5E .DailyTask_name__1spOK {
+    font-size: 16px;
+    -webkit-columns: #666;
+    -moz-columns: #666;
+    column-count: #666;
+}
+    .Book_book__2zLyg .Book_right__1bR8n .Book_prog__2AVmh {
+    margin-top: 10px;
+    position: relative;
+    height: 5px;
+    background-color: #edeff3;
+    border-radius: 3.5px;
+}
+
+</style>
+{% extends 'wordsweb_base.html' %}
+{% block content %}
+
+{% if not finish %}
+<div class="layout_main">
+    <div>
+        <div>
+            <div class="index_title">
+                四级单词
+            </div>
+
+            <div class="index_status__15KG5 ">
+                <div class="index_left__2l8QX">
+                    <div class="Book_book__2zLyg">
+                        <img src="../static/img/wordFour.jpeg" class="img">
+                        <div class="Book_right__1bR8n">
+                            <div>
+                                <div class="Book_title__32iYk">
+                                    <span>四级单词书</span>
+                                </div>
+                                <div class="Book_timeWrapper__1RYvh">
+                                    <span class="Book_tag__3dJ-F"><span style="color: white">预计完成时间</span></span>
+                                <span class="Book_time__1RNcG">{{finish_day}}</span>
+                                </div>
+                            </div>
+                            <div>
+                                <div class="Book_progText__3qseZ">
+                                    <span>已完成{{percent}}%</span>
+                                    <span>{{learned_num}}/{{total_words}}词</span>
+                                </div>
+                                <div class="Book_prog__2AVmh">
+                                    <div style="width: 12%;"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="index_right__54_cL">
+                    <div>
+                        <div class="DailyTask_title__30qax">今日任务</div>
+                        <div class="DailyTask_itemsWrapper__10XO7">
+                            <div class="DailyTask_item__3qF5E">
+                                <div class="DailyTask_num__1GeJP">{{learn_num}}</div>
+                                <div class="DailyTask_name__1spOK">新词数</div>
+                            </div>
+
+                            <div class="DailyTask_item__3qF5E">
+                                <div class="DailyTask_num__1GeJP">{{review_num}}</div>
+                                <div class="DailyTask_name__1spOK">复习单词</div>
+                            </div>
+
+                            <div class="DailyTask_item__3qF5E">
+                                <div class="DailyTask_num__1GeJP">{{not_learn}}</div>
+                                <div class="DailyTask_name__1spOK">未学单词</div>
+                            </div>
+
+                        </div>
+
+                    </div>
+
+
+                </div>
+            </div>
+
+            <div>
+<!--                <p><a class="btn btn-primary btn-lg" href="#" role="button">Learn more</a></p>-->
+                <p class="center-align" ><a class="waves-effect waves-light btn light-blue lighten-1" href="{%url 'wordsweb_memory'%}"><i class="material-icons left">mode_edit</i>继续学习</a></p>
+
+<!--               <a class="waves-effect waves-light btn"><i class="material-icons left">cloud</i>按钮</a>-->
+            </div>
+
+        </div>
+    </div>
+</div>
+{% else %}
+    <style>
+        .form-area{
+            width: 95% ;
+            margin: 13% auto;
+        }
+    </style>
+      <div class="row form-area">
+    <div class="row">
+      <div class="col l6 offset-l3 ">
+        <div class="card-panel light-blue lighten-1 ">
+          <span class="white-text">今天已经学习完毕
+          </span>
+        </div>
+      </div>
+    </div>
+
+      </div>
+{% endif %}
+{%endblock %}

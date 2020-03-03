@@ -1,0 +1,257 @@
+
+<script type="text/javascript" src="http://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+<style>
+
+
+.Layout_page__2Wedt .Layout_main__2_zw8 {
+    width: 1320px;
+    margin-left: auto;
+    margin-right: auto;
+    background-color: #fff;
+    overflow: hidden;
+}
+.study-page {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    outline: none;
+}
+
+.StudyPage_studyPage__1Ri5C {
+    padding: 20px;
+    max-width: 900px;
+    margin-left: auto;
+    margin-right: auto;
+    position: relative;
+}
+
+.index_wordBox__IJotZ {
+    position: relative;
+    text-align: center;
+    padding-top: 20px;
+}
+
+.index_wordBox__IJotZ .index_word__3nhJU {
+    font-size: 38.5px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 15px 0;
+}
+
+ .index_content__2QwXl {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 40px;
+    position: relative;
+    margin-bottom: 20px;
+}
+
+ .index_audioWrap__3agUR {
+    display: flex;
+    align-items: center;
+    margin: 0 20px;
+}
+
+    .index_btnBox__pXO_l {
+    text-align: center;
+    margin-bottom: 200px;
+}
+
+
+.index_option__1CVr2 {
+    width: 700px;
+    min-height: 55px;
+    display: inline-flex;
+    border: 1px solid #ddd;
+    cursor: pointer;
+}
+
+    .index_title__1zZFT {
+    flex-shrink: 0;
+    justify-content: center;
+    border-right: 1px solid #ddd;
+    width: 35px;
+    background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAgAAAAICAYAAADED76LAAAACXBIW…+fAgZ8ipiQ2FgVMaHxMRQxYTEVRRETDrfBFeFSAFcEGAC9HAqglH6g/AAAAABJRU5ErkJggg==);
+}
+
+    .index_content__1XOlo {
+    padding: 4px 15px;
+
+}
+
+.index_content__1XOlo, .index_title__1zZFT {
+    display: flex;
+    align-items: center;
+    color: #999;
+}
+
+    .index_progressBox__14Xo5 {
+    display: flex;
+    justify-content: center;
+    padding: 20px 0;
+}
+    .index_progress__1aCBt {
+    position: relative;
+    height: 20px;
+    display: flex;
+    border: 1px solid #e3e3e3;
+    width: 695px;
+}
+
+
+    .index_progress__1aCBt .index_opt__V_oeM {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    color: #fff;
+    font-size: 12px;
+}
+
+    .index_hint__2Z39O {
+    width: 700px;
+    padding: 15px;
+    font-size: 18px;
+    background-color: #eee;
+    border: 1px solid #ddd;
+    margin: 20px auto;
+}
+
+    .index_hint__2Z39O .highlight {
+    font-weight: 700;
+    color: #444;
+    font-size: 24px;
+}
+
+</style>
+{% extends 'wordsweb_base.html' %}
+{% block content %}
+<div class="Layout_page__2Wedt">
+    <div class="study-page">
+        <div class="StudyPage_studyPage__1Ri5C">
+            <div>
+                <div>
+                    <div  class="index_wordBox__IJotZ index_center___r_K_">
+                        <div class="index_word__3nhJU">
+                            <span id="word"></span>
+                        </div>
+                    <div class="index_content__2QwXl">
+                        <div class="index_audioWrap__3agUR">
+                            <audio src="http://dict.youdao.com/dictvoice?audio=hello" controls="controls" autoplay id="audio">volume_up</audio>
+                        </div>
+                        </div>
+                    </div>
+
+                    <div class="index_hint__2Z39O index_center___r_K_" style="display:none" id="content">
+                        n. 单词
+                         </br>
+                        I know a lot of <span class="highlight">word</span>s.
+
+                    </div>
+
+
+                    <div class="index_btnBox__pXO_l">
+                        <a class="waves-effect index_option__1CVr2 light-blue lighten-1 btn" id="yes" style="display: inline-block"><span style="color: black; font-size: 20px" >认识</span></a>
+                        <a class="waves-effect index_option__1CVr2 grey lighten-3 btn" id="no" style="display: inline-block"><span style="color: black;font-size: 20px" >不认识</span></a>
+                        <a class="waves-effect index_option__1CVr2 light-blue lighten-1 btn" id="next" style="display: none"><span style="color: black;font-size: 20px">下一个</span></a>
+                            <form action = "{% url 'wordsweb_memory' %}" method = "POST" id="finish" style=" display: none">
+                               {% csrf_token %}
+                                <button id='finish_button' type="submit" name="finish" value="123" class="waves-effect index_option__1CVr2 light-blue lighten-1 btn" ><span style="color: black;font-size: 20px;">恭喜背完所有单词</span></button>
+                            </form>
+
+
+
+<!--                        <div class="index_option__1CVr2 index_green__2lFgU">-->
+<!--                            <div class="index_title__1zZFT">1</div>-->
+<!--                            <div class="index_content__1XOlo">认识</div>-->
+<!--                        </div>-->
+<!--                        <div class="index_option__1CVr2 index_green__2lFgU">-->
+<!--                            <div class="index_title__1zZFT">2</div>-->
+<!--                            <div class="index_content__1XOlo">不认识</div>-->
+<!--                        </div>-->
+
+                    </div>
+                    <div class="index_progressBox__14Xo5" id = "length_bar">
+                        <div class="index_progress__1aCBt">
+                            <div class="index_opt__V_oeM" style="background-color: rgb(245, 245, 245); flex: 1 1 0%; color: rgb(68, 68, 68);" id="length">25</div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+    console.log('words12')
+    words = JSON.parse('{{words|safe}}');
+    console.log('words')
+    var keys1 = [];
+    for (var p1 in words) {
+          if (words.hasOwnProperty(p1))
+              keys1.push(p1);
+      }
+    // console.log(keys1);
+    // console.log(words[keys1[0]][0]['sentence']);
+    var a = 0;
+    var len = keys1.length;
+    var values = {};
+    $(document).ready(change_word());
+    function displayContent() {
+        var id=$(this).attr("id");
+        document.getElementById("content").style.display="block";
+        document.getElementById("yes").style.display = "none";
+        document.getElementById("no").style.display = "none";
+        document.getElementById("next").style.display = "inline-block";
+        if (id == 'yes'){
+            var word = keys1[a-1];
+            values[word] = 1;
+        }
+        else{
+            var word = keys1[a-1];
+            values[word] = 0;
+        }
+
+    }
+    function change_word(){
+        document.getElementById("word").innerHTML = keys1[a];
+        document.getElementById("content").innerHTML = words[keys1[a]][0]['part_of_speech']
+            + '.' + words[keys1[a]][0]['chinese'] + '</br>' +words[keys1[a]][0]['sentence'][0];
+
+        document.getElementById("length").innerHTML = len - a;
+        document.getElementById('audio').src = "http://dict.youdao.com/dictvoice?audio=" + keys1[a]
+        a += 1;
+    }
+
+    function displayNext(){
+        if (a < len ) {
+            document.getElementById("content").style.display = "none";
+            document.getElementById("yes").style.display = "inline-block";
+            document.getElementById("no").style.display = "inline-block";
+            document.getElementById("next").style.display = "none";
+            change_word();
+        }
+        else{
+
+            document.getElementById("audio").style.display = "none";
+            document.getElementById("length_bar").style.display = "none";
+            document.getElementById("word").style.display = "none";
+            document.getElementById("content").style.display = "none";
+            document.getElementById("next").style.display = "none";
+            console.log(keys1);
+            console.log(typeof(keys1));
+            document.getElementById('finish_button').value = JSON.stringify(values);
+            console.log(document.getElementById('finish').value);
+            document.getElementById('finish').style.display = "inline-block";
+
+        }
+    }
+    document.getElementById("yes").onclick = displayContent;
+    document.getElementById("no").onclick = displayContent;
+    document.getElementById("next").onclick = displayNext;
+
+</script>
+{%endblock %}
+

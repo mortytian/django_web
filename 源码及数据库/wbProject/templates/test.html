@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+<h2>JavaScript 可以更改 HTML</h2>
+
+<form action="{%url 'test' %} " method="POST">
+{% csrf_token %}
+
+<p id="p1">Hello World!</p>
+
+    <button type="button" id="i1">111</button>
+    <button type="button" id="i2">222</button>
+    <input name="t" type="hidden" value="thread" id="123"/>
+    <button type="submit" id="i3" style="visibility: hidden">333</button>
+
+</form>
+
+
+
+<script>
+document.getElementById("i1").onclick = displayDate;
+var a = 0;
+var c = [];
+data = JSON.parse('{{test|safe}}');
+function displayDate() {
+    if (data[a] != undefined){
+        document.getElementById("p1").innerHTML = data[a];
+        a += 1;
+        var d = {'button':'1', 'word':'111'};
+        c.push(JSON.stringify(d));
+
+    }
+    else{
+        document.getElementById("p1").innerHTML = 'finish';
+        document.getElementById("i1").style.visibility='hidden';
+        document.getElementById("i3").style.visibility="visible";
+        document.getElementById('123').setAttribute("value",c);
+    }
+}
+</script>
+
+
+
+<p>上面的段落由脚本更改。</p>
+
+</body>
+</html>
+
+
